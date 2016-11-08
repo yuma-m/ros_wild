@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ros_wild</name>
+  <version>0.1.0</version>
+  <description>The ros_wild package</description>
+
+  <maintainer email="yuma-m@users.noreply.github.com">Yuma.M</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">https://github.com/yuma-m/ros_wild</url>
+
+  <author email="yuma-m@users.noreply.github.com">Yuma Mihira</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>
