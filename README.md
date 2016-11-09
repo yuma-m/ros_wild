@@ -26,3 +26,8 @@ $ git clone https://github.com/yuma-m/ros_wild.git
 $ cd ../
 $ catkin_make
 ```
+
+## Links
+
+- Author: [Yuma Mihira](http://yurax2.com)
+- [ROS](http://www.ros.org/)
