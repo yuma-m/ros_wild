@@ -1,6 +1,6 @@
 # ros_wild
 
-Wrapper of ROS Subscriber to subscribe to multiple topics.
+Utility package to handle multiple topics in ROS.
 
 ## Usage
 
