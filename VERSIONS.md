@@ -1,3 +1,7 @@
+## 0.3.0
+
+- Create a node to echo topics
+
 ## 0.2.0
 
 - Create wildcard publisher
