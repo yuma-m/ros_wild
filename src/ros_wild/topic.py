@@ -16,6 +16,7 @@ class Topic(object):
         u""" Constructor of wildcard subscriber
 
         :param str name_regex: Regular expression of topic name
+        :param type data_class: name of class or Class to subscribe
         """
         self._pub_or_sub = pub_or_sub
         self._name_regex = name_regex
@@ -24,18 +25,23 @@ class Topic(object):
         self._kwargs = kwargs
         self._topics = {}
 
-        topics = rostopic.find_by_type(data_class._type)
+        topics = self._get_topics_by_data_class()
         for topic in topics:
             if re.match(name_regex, topic):
-                pub_or_sub = self._pub_or_sub(topic, data_class, *args, **kwargs)
-                self._topics[topic] = pub_or_sub
+                self._call_pub_or_sub(topic)
 
     def reload_topics(self):
-        topics = rostopic.find_by_type(self._data_class._type)
+        topics = self._get_topics_by_data_class()
         for topic in topics:
             if topic not in self._topics and re.match(self._name_regex, topic):
-                pub_or_sub = self._pub_or_sub(topic, self._data_class, *self._args, **self._kwargs)
-                self._topics[topic] = pub_or_sub
+                self._call_pub_or_sub(topic)
+
+    def _get_topics_by_data_class(self):
+        return rostopic.find_by_type(self._data_class._type)
+
+    def _call_pub_or_sub(self, topic):
+        pub_or_sub = self._pub_or_sub(topic, self._data_class, *self._args, **self._kwargs)
+        self._topics[topic] = pub_or_sub
 
     def unregister(self, topic_name):
         u""" unregister from a topic
