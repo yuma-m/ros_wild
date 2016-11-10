@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import re
-
 import rospy
-import rostopic
 
 from .topic import Topic
 
