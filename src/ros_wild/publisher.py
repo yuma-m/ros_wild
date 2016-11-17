@@ -7,7 +7,10 @@ from .topic import Topic
 
 
 class Publisher(Topic):
-    u""" Wildcard publisher class """
+    u""" Wildcard publisher class
+
+    :type _topics: dict[str, rospy.Publisher]
+    """
 
     def __init__(self, name_regex, *args, **kwargs):
         u""" Constructor of wildcard publisher
