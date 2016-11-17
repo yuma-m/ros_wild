@@ -1,3 +1,7 @@
+## 0.4.0
+
+- Modify publisher and subscriber to create instance without specifying data class
+
 ## 0.3.0
 
 - Create a node to echo topics

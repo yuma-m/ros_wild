@@ -11,9 +11,10 @@ Example scripts are placed in example directory.
 #### Echo multiple topics
 
 ```bash
-$ rosrun ros_wild echo ".*_sensor" sensor_msgs/Range
+$ rosrun ros_wild echo ".*_sensor"
 ---
 topic: /ultrasound_sensor
+type: sensor_msgs/Range
 
 header: 
   seq: 1
@@ -28,6 +29,7 @@ max_range: 3.0
 range: 0.600000023842
 ---
 topic: /infrared_sensor
+type: sensor_msgs/Range
 
 header: 
   seq: 2
@@ -47,11 +49,10 @@ range: 0.20000000298
 #### Wildcard Subscriber
 
 ```python
->>> from rosgraph_msgs.msg import Log
 >>> from ros_wild import Subscriber
 
 # subscribe to all Log topics
->>> sub = Subscriber(r".*", Log)
+>>> sub = Subscriber(r"/rosout.*")
 >>> sub.subscribed_topics
 ['/rosout', '/rosout_agg']
 
@@ -61,21 +62,25 @@ range: 0.20000000298
 []
 
 # resubscribed to topics
->>> sub.reload()
+>>> sub.reload_topics()
 >>> sub.subscribed_topics
 ['/rosout', '/rosout_agg']
 ```
 
 #### Wildcard Publisher
 
+The code below will publish Log message to `/rosout` and `/rosout_agg` topics.
+
 ```python
 >>> import rospy
->>> from rosgraph_msgs.msg import Log
 >>> from ros_wild import Publisher
+>>> from rosgraph_msgs.msg import Log
 
 # publish to all Log topics
 >>> rospy.init_node("test")
->>> pub = Publisher("/rosout.*", Log, queue_size=1)
+>>> pub = Publisher(".*", queue_size=1)
+>>> pub.published_topics
+['/rosout', '/rosout_agg', '/tf', ... ]
 >>> pub.publish(Log(msg="this is test message"))
 ```
 
