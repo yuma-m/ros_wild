@@ -7,7 +7,10 @@ from .topic import Topic
 
 
 class Publisher(Topic):
-    u""" Wildcard publisher class """
+    u""" Wildcard publisher class
+
+    :type _topics: dict[str, rospy.Publisher]
+    """
 
     def __init__(self, name_regex, *args, **kwargs):
         u""" Constructor of wildcard publisher
@@ -25,5 +28,5 @@ class Publisher(Topic):
 
     def publish(self, msg):
         for topic, publisher in self._topics.items():
-            if rostopic.get_topic_type(topic) == msg._type:
+            if isinstance(msg, rostopic.get_topic_class(topic)[0]):
                 publisher.publish(msg)

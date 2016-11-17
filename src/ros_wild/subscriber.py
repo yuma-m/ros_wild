@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 
 import rospy
+import rostopic
 
 from .topic import Topic
 
 
 class Subscriber(Topic):
-    u""" Wildcard subscriber class """
+    u""" Wildcard subscriber class
+
+    :type _topics: dict[str, rospy.Subscriber]
+    """
 
     def __init__(self, name_regex, *args, **kwargs):
         u""" Constructor of wildcard subscriber
@@ -21,6 +25,13 @@ class Subscriber(Topic):
     @property
     def subscribed_topics(self):
         return sorted(self._topics.keys())
+
+    def register_callback(self, data_class, callback, callback_args=None):
+        for topic, subscriber in self._topics.items():
+            if rostopic.get_topic_class(topic)[0] == data_class:
+                subscriber.impl.add_callback(callback, callback_args)
+                subscriber.callback = callback
+                subscriber.callback_args = callback_args
 
 
 class EchoSubscriber(Subscriber):

@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Register callback by data class to wildcard subscriber
+
 ## 0.4.0
 
 - Modify publisher and subscriber to create instance without specifying data class
