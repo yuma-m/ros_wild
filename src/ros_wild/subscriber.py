@@ -33,6 +33,22 @@ class Subscriber(Topic):
                 subscriber.callback = callback
                 subscriber.callback_args = callback_args
 
+    @property
+    def topics_with_callback(self):
+        topics = []
+        for topic, subscriber in self._topics.items():
+            if subscriber.callback is not None:
+                topics.append(topic)
+        return topics
+
+    @property
+    def topics_without_callback(self):
+        topics = []
+        for topic, subscriber in self._topics.items():
+            if subscriber.callback is None:
+                topics.append(topic)
+        return topics
+
 
 class EchoSubscriber(Subscriber):
     u""" Wildcard subscriber to echo topics """

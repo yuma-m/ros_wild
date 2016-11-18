@@ -1,3 +1,8 @@
+## 0.4.2
+
+- Add tests for publisher and subscriber
+- Add topics_with/without_callback method for subscriber
+
 ## 0.4.1
 
 - Register callback by data class to wildcard subscriber
