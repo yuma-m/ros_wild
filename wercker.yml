@@ -1,0 +1,27 @@
+box: ros:kinetic
+
+build:
+  steps:
+    - install-packages:
+      packages: python-pip
+    - pip-install
+    - script:
+      name: setup ros environments
+      code: |
+        source /opt/ros/kinetic/setup.bash
+        mkdir -p /root/catkin_ws/src
+        cd /root/catkin_ws/src
+        catkin_init_workspace
+        cd /root/catkin_ws
+        catkin_make
+        source /root/catkin_ws/devel/setup.bash
+        ln -s $WERCKER_SOURCE_DIR /root/catkin_ws/src/ros_wild
+    - script:
+      name: catkin_make
+      code: |
+        cd /root/catkin_ws/
+        catkin_make
+    - script:
+      name: run tests
+      code: |
+        nosetests -svw test/

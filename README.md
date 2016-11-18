@@ -1,4 +1,4 @@
-# ros_wild
+# ros_wild [![wercker status](https://app.wercker.com/status/3abcf80d47591d27645af7362fbee6df/s/master "wercker status")](https://app.wercker.com/project/byKey/3abcf80d47591d27645af7362fbee6df)
 
 Utility package to handle multiple topics in ROS.
 
