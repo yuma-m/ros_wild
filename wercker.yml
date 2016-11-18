@@ -16,11 +16,9 @@ build:
         catkin_make
         source /root/catkin_ws/devel/setup.bash
         ln -s $WERCKER_SOURCE_DIR /root/catkin_ws/src/ros_wild
-    - script:
-      name: catkin_make
-      code: |
         cd /root/catkin_ws/
         catkin_make
+        nohup roscore &
     - script:
       name: run tests
       code: |
