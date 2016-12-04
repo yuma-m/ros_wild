@@ -16,9 +16,9 @@ $ rosrun ros_wild echo ".*_sensor"
 topic: /ultrasound_sensor
 type: sensor_msgs/Range
 
-header: 
+header:
   seq: 1
-  stamp: 
+  stamp:
     secs: 1478776655
     nsecs:    143582
   frame_id: ultrasound_sensor
@@ -31,9 +31,9 @@ range: 0.600000023842
 topic: /infrared_sensor
 type: sensor_msgs/Range
 
-header: 
+header:
   seq: 2
-  stamp: 
+  stamp:
     secs: 1478776656
     nsecs:    998511
   frame_id: infrared_sensor
