@@ -14,11 +14,18 @@ catkin_package(
 ## Build ##
 ###########
 
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+)
 
 #############
 ## Install ##
 #############
 
+install(PROGRAMS
+  scripts/echo
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 #############
 ## Testing ##
