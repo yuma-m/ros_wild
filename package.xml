@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>ros_wild</name>
-  <version>0.4.2</version>
+  <version>0.5.0</version>
   <description>The ros_wild package</description>
 
   <maintainer email="yuma-m@users.noreply.github.com">Yuma.M</maintainer>
