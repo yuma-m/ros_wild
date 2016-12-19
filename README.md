@@ -127,4 +127,5 @@ The code below will publish Log message to `/rosout` and `/rosout_agg` topics.
 ## Links
 
 - Author: [Yuma Mihira](http://yurax2.com)
+- [Documentation](http://wiki.ros.org/ros_wild)
 - [ROS](http://www.ros.org/)
