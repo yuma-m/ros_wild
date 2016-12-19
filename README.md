@@ -1,12 +1,22 @@
 # ros_wild [![wercker status](https://app.wercker.com/status/3abcf80d47591d27645af7362fbee6df/s/master "wercker status")](https://app.wercker.com/project/byKey/3abcf80d47591d27645af7362fbee6df)
 
-Utility package to handle multiple topics in ROS.
+Wildcard Subscriber and Publisher for ROS (Python only).
 
 ## Installation
 
 ```bash
 $ sudo apt install ros-kinetic-ros-wild
 ```
+
+or
+
+```bash
+$ cd /path/to/your/catkin_ws/src/
+$ git clone https://github.com/yuma-m/ros_wild.git
+$ cd ../
+$ catkin_make
+```
+
 
 ## Usage
 
@@ -112,15 +122,6 @@ The code below will publish Log message to `/rosout` and `/rosout_agg` topics.
 >>> pub.published_topics
 ['/rosout', '/rosout_agg', '/tf', ... ]
 >>> pub.publish(Log(msg="this is test message"))
-```
-
-## Installation
-
-```bash
-$ cd /path/to/your/catkin_ws/src/
-$ git clone https://github.com/yuma-m/ros_wild.git
-$ cd ../
-$ catkin_make
 ```
 
 ## Links
