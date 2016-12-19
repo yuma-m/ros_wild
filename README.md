@@ -2,6 +2,12 @@
 
 Utility package to handle multiple topics in ROS.
 
+## Installation
+
+```bash
+$ sudo apt install ros-kinetic-ros-wild
+```
+
 ## Usage
 
 Example scripts are placed in example directory.
@@ -61,10 +67,34 @@ range: 0.20000000298
 >>> sub.subscribed_topics
 []
 
-# resubscribed to topics
+# resubscribe to topics
 >>> sub.reload_topics()
 >>> sub.subscribed_topics
 ['/rosout', '/rosout_agg']
+```
+
+#### Register Callback
+
+```python
+>>> from ros_wild import Subscriber
+>>> from std_msgs.msg import Bool, String
+
+>>> def callback_bool(msg):
+>>>     print("bool is {}".format(msg.data))
+
+>>> def callback_string(msg):
+>>>     print("string is {}".format(msg.data))
+
+# subscribe without callback
+>>> sub = Subscriber(r".+")
+>>> print("Subscribed topics are {}".format(sub.subscribed_topics))
+Subscribed topics are ['/bool/01', '/rosout', 'rosout_agg', '/string/01']
+
+# register callback
+>>> sub.register_callback(Bool, callback_bool)
+>>> sub.register_callback(String, callback_string)
+>>> print("Topics with callback are {}".format(sub.topics_with_callback))
+Topics with callaback are ['/bool/01', '/strings/01']
 ```
 
 #### Wildcard Publisher
@@ -76,7 +106,7 @@ The code below will publish Log message to `/rosout` and `/rosout_agg` topics.
 >>> from ros_wild import Publisher
 >>> from rosgraph_msgs.msg import Log
 
-# publish to all Log topics
+# publish to all topics
 >>> rospy.init_node("test")
 >>> pub = Publisher(".*", queue_size=1)
 >>> pub.published_topics
